@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Microplastics Practice </title>
+</head>
+<body>
+
+    <h3>Microplastics Practice</h3>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<script>
+    const url = "scraping_loop.csv";
+    d3.csv(url)
+        .then(function(data){
+            console.log(data)
+        });
+    d3.select('h3').style('color', 'darkblue')
+    d3.select('h3').style('font-size', '24px')
+
+</script>
+</body>
+</html>
+
+
