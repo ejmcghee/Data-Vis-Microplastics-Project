@@ -18,7 +18,7 @@
         var chart
 
         d3.csv(url).then(function(data){
-            chart = BubbleChart(d3.select("#svgcontainer"), data, {
+            chart = BubbleChart(data, {
                 label: d => d.product,
                 value: d => d.n_ingre,
                 group: d => d.product_type,
@@ -28,7 +28,7 @@
 
 // debug: console does return svg object
             console.log(
-                BubbleChart(d3.select("#svgcontainer"), data, {
+                BubbleChart(data, {
                 label: d => d.product,
                 value: d => d.n_ingre,
                 group: d => d.product_type,
@@ -55,7 +55,7 @@
         // Released under the ISC license.
         // https://observablehq.com/@d3/bubble-chart
 
-        function BubbleChart(container, data, {
+        function BubbleChart(data, {
             name = ([x]) => x, // alias for label
             label = name, // given d in data, returns text to display on the bubble
             value = ([, y]) => y, // given d in data, returns a quantitative size
@@ -106,7 +106,7 @@
                             })
                             .sum(i => V[i]));
 
-                    const svg = container.append("svg")
+                    const svg = d3.create("svg")
                         .attr("width", width)
                         .attr("height", height)
                         .attr("viewBox", [-marginLeft, -marginTop, width, height])
